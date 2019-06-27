@@ -88,6 +88,10 @@ makeCondition varNumber = do
       condition
     (condition : moreConditions) ->
       foldl' joinConditions condition moreConditions
+    other ->
+      error
+      $ "Mockazo: Error when running 'makeCondition' for value '" <> show other <> "'\n"
+      <> "Please file an issue for this at https://github.com/theam/mockazo/issues"
  where
   compareVars v v' =
     Meta.UInfixE v (Meta.VarE (Meta.mkName "==")) v'

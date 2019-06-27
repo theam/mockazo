@@ -1,4 +1,9 @@
-module Mock.HigherKinded where
+module Mock.HigherKinded
+  ( Action(..)
+  , Component(..)
+  , mock
+  , test
+  ) where
 
 import Relude
 import Data.Component.Mock

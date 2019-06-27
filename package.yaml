@@ -39,6 +39,8 @@ default-extensions:
 
 library:
   source-dirs: src
+  exposed-modules:
+    - Data.Component.Mock
 
 tests:
   mockazo-test:
@@ -51,3 +53,18 @@ tests:
     dependencies:
     - mockazo
     - hspec
+
+ghc-options:
+  - -Wall
+  - -fno-warn-orphans
+  - -fno-warn-name-shadowing
+  - -optP-Wno-nonportable-include-path
+  - -Wincomplete-uni-patterns
+  - -Wincomplete-record-updates
+  - -Wcompat
+  - -Widentities
+  - -Wredundant-constraints
+  - -Wmissing-export-lists
+  - -Wpartial-fields
+  - -fhide-source-paths
+  - -freverse-errors

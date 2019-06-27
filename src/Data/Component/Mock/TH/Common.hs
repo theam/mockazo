@@ -42,7 +42,7 @@ functionTypeToList type' =
     Meta.SigT t _ ->
       functionTypeToList t
 
-    Meta.ForallT _ ctxt t ->
+    Meta.ForallT _ _ t ->
       functionTypeToList t
 
     t ->
@@ -83,6 +83,10 @@ toField (fieldName, _, fieldType) = do
 toVarExp :: Meta.Pat -> Meta.Exp
 toVarExp (Meta.VarP varName) =
   Meta.VarE varName
+toVarExp other =
+  error
+    $ "Mockazo: Error when running 'toVarExp' for value '" <> show other <> "'\n"
+    <> "Please file an issue for this at https://github.com/theam/mockazo/issues"
 
 makeVarsWith :: [String] -> [Meta.Pat]
 makeVarsWith varNames =

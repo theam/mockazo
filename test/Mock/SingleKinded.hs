@@ -1,4 +1,9 @@
-module Mock.SingleKinded where
+module Mock.SingleKinded
+  ( Action(..)
+  , Component(..)
+  , mock
+  , test
+  ) where
 
 import Relude
 import Data.Component.Mock

@@ -20,15 +20,31 @@ import Data.HList.ContainsType
 
 import Data.Component.Mock.TH
 
+{- | Context that gets injected to the components
+to store the values that are being executed.
+
+These actions will be compared during the tests
+with the ones that you expect, failing in case
+of a mismatch.
+-}
 type InContextOf s =
   MultiStateT s IO
 
+{-| Constraint to specify that some actions
+contain the type of actions to be executed.
+-}
 type Executes action actions =
   ContainsType [WithResult action] actions
 
+{-| Runs the mock context and all the checks
+with it
+-}
 runMock :: InContextOf '[] a -> IO ()
 runMock = runMultiStateTNil_
 
+{-| Specify the expected actions for a given component
+to expect to be executed
+-}
 withActions
   :: IsAction action
   => [WithResult action]
@@ -45,9 +61,16 @@ withActions actions execution = do
         $ "Execution ended, but those actions were expected to be run:\n"
         <> unlines (fmap (\(action :-> _) -> "  • '" <> showAction action <> "'") remainingActions)
 
+{-| Operator to specify that an action returns some result
+-}
 data WithResult action where
   (:->) :: action result -> result -> WithResult action
 
+{-| Class that all actions must implement in order to work
+with the rest of the library.
+
+You only need to implement 'eqAction'
+-}
 class IsAction (action :: Type -> Type) where
   eqAction :: action a -> action b -> Maybe (a :~: b)
   showAction :: action a -> Text
@@ -59,6 +82,10 @@ class IsAction (action :: Type -> Type) where
     showAction' :: forall g a. ForallF Show g => g a -> String
     showAction' x = show x \\ (instF :: ForallF Show g :- Show (g a))
 
+{-| Utility function to be used in the creation of the mock
+components, so the methods store action values instead of
+executing anything else
+-}
 mockAction
   :: ContainsType ([WithResult action]) actions
   => IsAction action
