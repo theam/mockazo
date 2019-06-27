@@ -1,0 +1,53 @@
+name:                mockazo
+version:             0.1.0
+github:              "theam/mockazo"
+license:             MIT
+author:              The Agile Monkeys
+maintainer:          hackers@theagilemonkeys.com
+copyright:           2019 The Agile Monkeys
+
+extra-source-files:
+- README.md
+
+synopsis:            Mock records of functions easily
+category:            Testing
+description:         Please see the README on GitHub at <https://github.com/theam/mockazo#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- constraints >= 0.10
+- multistate >= 0.8
+- template-haskell >= 2.14
+- relude >= 0.4
+
+default-extensions:
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - FlexibleContexts
+  - GADTs
+  - KindSignatures
+  - NoImplicitPrelude
+  - OverloadedStrings
+  - RankNTypes
+  - RecordWildCards
+  - StandaloneDeriving
+  - ScopedTypeVariables
+  - TemplateHaskell
+  - TupleSections
+  - TypeOperators
+
+library:
+  source-dirs: src
+
+tests:
+  mockazo-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - mockazo
+    - hspec
