@@ -1,6 +1,13 @@
 # Mockazo 👃
 _Mock your records of functions with ease_
 
+[![CircleCI](https://circleci.com/gh/theam/mockazo.svg?style=svg&circle-token=e80d08cb0d9855a774709311335f4e29ca40f5de)](https://circleci.com/gh/theam/mockazo)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/theam/mockazo.svg)](http://isitmaintained.com/project/theam/mockazo "Average time to resolve an issue")
+[![GitHub license](https://img.shields.io/github/license/theam/mockazo.svg)](https://github.com/theam/mockazo/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/theam/mockazo.svg)](https://GitHub.com/theam/mockazo/releases/)
+[![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
 One approach to structure a Haskell is using records of functions, sometimes called
 handles, services, or as we like to call them, components.
 
