@@ -5,7 +5,7 @@ _Mock your records of functions with ease_
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/theam/mockazo.svg)](http://isitmaintained.com/project/theam/mockazo "Average time to resolve an issue")
 [![GitHub license](https://img.shields.io/github/license/theam/mockazo.svg)](https://github.com/theam/mockazo/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/theam/mockazo.svg)](https://GitHub.com/theam/mockazo/releases/)
+[![Hackage version](https://img.shields.io/hackage/v/mockazo.svg)](https://hackage.haskell.org/package/mockazo)
 [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 One approach to structure a Haskell is using records of functions, sometimes called
