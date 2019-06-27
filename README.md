@@ -2,7 +2,7 @@
 _Mock your records of functions with ease_
 
 [![CircleCI](https://circleci.com/gh/theam/mockazo.svg?style=svg&circle-token=e80d08cb0d9855a774709311335f4e29ca40f5de)](https://circleci.com/gh/theam/mockazo)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/theam/mockazo.svg)](http://isitmaintained.com/project/theam/mockazo "Average time to resolve an issue")
 [![GitHub license](https://img.shields.io/github/license/theam/mockazo.svg)](https://github.com/theam/mockazo/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/theam/mockazo.svg)](https://GitHub.com/theam/mockazo/releases/)
@@ -136,14 +136,16 @@ importantOperation Logging.Component{..} = do
 ```
 
 We want to assure that these operations are run in order and with the
-appropriate arguments. We can write a test for it by using Mockazo's little DSL:
+appropriate arguments. We can write a test for it by using Mockazo's little DSL.
+
+In our tests file:
 
 ```haskell
 import qualified Mock.Logging as Logging
 
 let loggingMock = Logging.mock
 
--- ... somewhere our test framework
+-- ... somewhere in our test framework
 
 runMock
   $ withActions
