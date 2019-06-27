@@ -117,7 +117,7 @@ If for some reason, you want to add the export list to the mock module (your com
 complaining), you can fix it like this:
 
 ```haskell
-module Mock.Logging (Action(..), Component(..), mock, test) where
+module Mock.Logging (Action(..), Component(..), mock) where
 import Logging
 makeMock ''Component
 ```
