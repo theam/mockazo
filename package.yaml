@@ -1,7 +1,8 @@
 name:                mockazo
-version:             0.1.0
+version:             0.1.1
 github:              "theam/mockazo"
 license:             MIT
+license-file:        LICENSE.md
 author:              The Agile Monkeys
 maintainer:          hackers@theagilemonkeys.com
 copyright:           2019 The Agile Monkeys
