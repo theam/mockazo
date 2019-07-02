@@ -15,7 +15,7 @@ main = hspec $ do
         runMock
           $ withActions
             [ SingleKinded.Bar "x" :-> 3
-            , SingleKinded.Bar "y" :-> 4
+            , SingleKinded.Quux :-> 4
             , SingleKinded.Foo 3 4 :-> ()
             ]
           $ SingleKinded.test mock

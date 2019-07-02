@@ -80,7 +80,7 @@ wildcardClause =
 
 makeCondition :: Int -> Meta.Exp
 makeCondition varNumber = do
-  let vars = fmap toVarExp $ makeVars varNumber
+  let vars = fmap toVarExp $ makeVars $ traceShowId varNumber
   let primeVars = fmap toVarExp $ makePrimeVars varNumber
   let comparedVars = zipWith compareVars vars primeVars
   case comparedVars of
@@ -88,10 +88,8 @@ makeCondition varNumber = do
       condition
     (condition : moreConditions) ->
       foldl' joinConditions condition moreConditions
-    other ->
-      error
-      $ "Mockazo: Error when running 'makeCondition' for value '" <> show other <> "'\n"
-      <> "Please file an issue for this at https://github.com/theam/mockazo/issues"
+    [] ->
+      (Meta.ConE $ Meta.mkName "True")
  where
   compareVars v v' =
     Meta.UInfixE v (Meta.VarE (Meta.mkName "==")) v'
