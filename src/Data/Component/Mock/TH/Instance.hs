@@ -80,7 +80,7 @@ wildcardClause =
 
 makeCondition :: Int -> Meta.Exp
 makeCondition varNumber = do
-  let vars = fmap toVarExp $ makeVars $ traceShowId varNumber
+  let vars = fmap toVarExp $ makeVars varNumber
   let primeVars = fmap toVarExp $ makePrimeVars varNumber
   let comparedVars = zipWith compareVars vars primeVars
   case comparedVars of
