@@ -19,6 +19,9 @@ make recordName fields = pure $
               (Meta.ConT $ Meta.mkName "Executes")
               (Meta.ConT $ Meta.mkName "Action"))
             (Meta.VarT $ Meta.mkName "actions")
+        , Meta.AppT
+            (Meta.ConT $ Meta.mkName "Typeable")
+            (Meta.VarT $ Meta.mkName "actions")
         ]
         (Meta.AppT
           (Meta.ConT recordName)

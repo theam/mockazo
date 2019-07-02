@@ -26,8 +26,10 @@ default-extensions:
   - DataKinds
   - DefaultSignatures
   - FlexibleContexts
+  - FlexibleInstances
   - GADTs
   - KindSignatures
+  - MultiParamTypeClasses
   - NoImplicitPrelude
   - OverloadedStrings
   - RankNTypes

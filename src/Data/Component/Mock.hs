@@ -9,6 +9,7 @@ module Data.Component.Mock
   , withActions
 
   , module Data.Component.Mock.TH
+  , module Data.Component.Mock.Match
   ) where
 
 import Relude
@@ -19,6 +20,7 @@ import Control.Monad.Trans.MultiState hiding (MultiState)
 import Data.HList.ContainsType
 
 import Data.Component.Mock.TH
+import Data.Component.Mock.Match
 
 {- | Context that gets injected to the components
 to store the values that are being executed.

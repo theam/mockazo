@@ -94,6 +94,6 @@ makeCondition varNumber = do
       <> "Please file an issue for this at https://github.com/theam/mockazo/issues"
  where
   compareVars v v' =
-    Meta.UInfixE v (Meta.VarE (Meta.mkName "==")) v'
+    Meta.UInfixE v (Meta.VarE (Meta.mkName "<=>")) v'
   joinConditions c c' =
     Meta.UInfixE c (Meta.VarE (Meta.mkName "&&")) c'

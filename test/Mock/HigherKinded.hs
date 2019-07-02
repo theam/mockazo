@@ -8,9 +8,16 @@ module Mock.HigherKinded
 import Relude
 import Data.Component.Mock
 
+data Wat a b = Wat
+    deriving (Eq, Show)
+
+data Watson
+data Sherlock
+
 data Component context = Component
   { foo :: Maybe Int -> Maybe Int -> context ()
   , bar :: Maybe Text -> context (Maybe Int)
+  , quux :: Wat Watson Sherlock -> context () -> context ()
   }
 
 makeMock ''Component

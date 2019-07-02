@@ -2,6 +2,7 @@ module Data.Component.Mock.TH.Common
   ( actionName
   , titleizeName
   , functionTypeToList
+  , functionTypeVars
   , makePrimeVars
   , makeVars
   , Field(..)
@@ -11,6 +12,7 @@ module Data.Component.Mock.TH.Common
 
 import Relude
 import Data.Char
+import qualified Data.List as List
 
 import Language.Haskell.TH as Meta
 import Language.Haskell.TH.Syntax as Meta
@@ -47,6 +49,26 @@ functionTypeToList type' =
 
     t ->
       [t]
+
+functionTypeVars :: Meta.Type -> [Meta.Name]
+functionTypeVars =
+  List.nub . go
+ where
+  go type' =
+    case type' of
+      Meta.ForallT vars _ t ->
+        fmap extractName vars <> functionTypeVars t
+
+      Meta.AppT t1 t2 ->
+        functionTypeVars t1 <> functionTypeVars t2
+
+      Meta.VarT name ->
+        [name]
+
+      _ ->
+        []
+  extractName (Meta.PlainTV name) = name
+  extractName (Meta.KindedTV name _) = name
 
 -- | Creates a list of n elements from
 -- the sequence from a' to z'

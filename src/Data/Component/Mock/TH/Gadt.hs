@@ -54,10 +54,37 @@ constructorFromField (fieldName, _, type') =
       pure $ Meta.GadtC [name] [] resultType
     othersAndResult -> do
       let resultType = Unsafe.last othersAndResult
-      let inputType = Unsafe.init othersAndResult
+      let inputType  = Unsafe.init othersAndResult
       resultType <- substituteReturnContext resultType
       let name = titleizeName fieldName
-      pure $ Meta.GadtC [name] (toList $ fmap (noBang,) inputType) resultType
+      let res = Meta.GadtC [name] (toList $ fmap (noBang,) inputType) resultType
+                -- & addTypeableConstraint inputType
+      traceM "=====  BASE TYPE GOT IS :  ====="
+      traceShowM type'
+      traceM "===== GENERATING TYPE FROM ====="
+      traceShowM res
+      traceM "=====   GENERATED TYPE IS  ====="
+      traceM $ Meta.pprint res
+      pure res
+
+addTypeableConstraint :: [Meta.Type] -> Meta.Con -> Meta.Con
+addTypeableConstraint types constructor =
+  Meta.ForallC
+    (fmap Meta.PlainTV vars)
+    (fmap typeableConstraint vars)
+    constructor
+ where
+  vars =
+    types >>= extractVar
+  extractVar (Meta.AppT t1 t2) =
+    extractVar t1 <> extractVar t2
+  extractVar (Meta.VarT var) =
+    [var]
+  extractVar _ =
+    []
+  typeableConstraint a =
+    Meta.AppT (Meta.ConT $ Meta.mkName "Typeable") (Meta.VarT a)
+
 
 derivedInstances :: [Meta.Dec]
 derivedInstances =
