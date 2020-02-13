@@ -1,8 +1,0 @@
-resolver: lts-13.25
-
-packages:
-- .
-
-extra-deps:
-- multistate-0.8.0.2
-- require-0.4.2
